@@ -1,4 +1,4 @@
-# Factory
+# Abstract Factory
 
 This project implements a use case for a Design Pattern, the Abstract Factory. To know more about this pattern you can access [this website](https://refactoring.guru/design-patterns/abstract-factory).
 
@@ -34,14 +34,14 @@ All the monster can belong to 4 different variants:
 
 Yes, I love fantasy and I'm a ruge fan of Avatar the Last Airbender. Let's build the table:
 
-|       | Dragon     | Monster      | Elf           |
-|-------|------------|--------------|---------------|
-| Fire  | BlazeWurm  | PyroBeast    | EmberSprite   |
-| Water | Aquazor    | TidalTantrum | MistMage      |
-| Earth | GolemWyrm  | Terrakin     | GroveGuardian |
-| Air   | GaleWyvern | WindWraith   | SkySylph      |
+|       | Dragon      | Monster       | Elf           |
+|-------|-------------|---------------|---------------|
+| Fire  | Blaze Wurm  | Pyro Beast    | Ember Sprite  |
+| Water | Aquazor     | Tidal Tantrum | Mist Mage     |
+| Earth | Golem Wyrm  | Terrakin      | GroveGuardian |
+| Air   | Gale Wyvern | Wind Wraith   | Sky Sylph     |
 
-Now, let's suppose that we are creating a map with regions that are full of volcanoes, perfect to Fire magical creatures, there are aquatic regions, like rivers, lakes and sea, perfect to Water magical creatures, regions like deserts and woods, where earth creatures can live in piece and montains, abisms and another king of very high environments, where Air creatures can adapt better. The **Map** can be a class, and this class is responsible for populating each region with the right type of creatures. So the Map is the client that is going to call the factories, and the products are the creatures.
+Now, let's suppose that we are creating a map with regions that are full of volcanoes, perfect to Fire magical creatures, there are aquatic regions, like rivers, lakes and sea, perfect to Water magical creatures, regions like deserts and woods, where Earth creatures can live in piece and montains, abisms and another king of very high environments, where Air creatures can adapt better. The **Map** can be a class, and this class is responsible for populating each region with the right type of creatures. So the Map is the client that is going to call the factories, and the products are the creatures.
 
 Let's start implementing some client code:
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     creature.runaway()
 ```
 
-Now we need to implement the missing Factories, all of them need a method *create_magical_creatures* returning what creatures were returned:
+Now we need to implement the missing Factories, all of them need a method *create_magical_creatures* returning the creatures were created:
 
 ```python
 from abc import ABC, abstractmethod
@@ -208,7 +208,7 @@ class SkySylph(MagicalCreature):
     self.name = 'Sky Sylph'
 ```
 
-As you can see, all the magical creatures has the same methods, they can attack, runaway or get damage, all of them have a common attribute, the *name* attribute, and we can easily customize the method inside each creatures. If we want *Gale Wyvern* to attack in a different way, we can overwrite the method attack inside the class *GaleWyvern*. The same way we can specific methods to specific creatures.
+As you can see, all the magical creatures has the same methods, they can attack, runaway or get damage, all of them have a common attribute, the *name* attribute, and we can easily customize the method inside each creatures. If we want *Gale Wyvern* to attack in a different way, we can overwrite the method attack inside the class *GaleWyvern*. The same way we can create specific methods to specific creatures.
 
 Now we can execute the *main.py* module to see what happens:
 
